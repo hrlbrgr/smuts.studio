@@ -6,6 +6,14 @@ image: https://shud-og.vercel.app/api/og?title=About.
 ---
 
 import Head from "next/head"
+import VideoPlayer from '../lib/video';
+
+<VideoPlayer
+  gifv="true"
+  poster="https://bergberger.com/images/projects/introloop_poster.gif"
+  mp4="https://bergberger.com/images/projects/introloop.mp4"
+  webm="https://bergberger.com/images/projects/introloop.webm"
+/>
 
 <Head>
   <title>smuts</title>

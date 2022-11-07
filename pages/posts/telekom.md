@@ -10,7 +10,6 @@ import Link from 'next/link';
 <Link href="/posts">← Back to projects</Link>
 
 <VideoPlayer
-	gifv="true"
 	poster="/videos/telekom-dabei_poster.gif"
 	mp4="/videos/telekom-dabei.mp4"
 	webm="/videos/telekom-dabei.webm"

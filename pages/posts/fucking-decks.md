@@ -4,9 +4,17 @@ date: 2021/08/01
 description: We whip together some wicked decks to do our ideas justice.
 ---
 
+import VideoPlayer from '../../lib/video';
 import Link from 'next/link';
 
 <Link href="/posts">← Back to projects</Link>
+
+<VideoPlayer
+	gifv="true"
+	poster="/videos/decks_poster.gif"
+	mp4="/videos/decks.mp4"
+	webm="/videos/decks.webm"
+/>
 
 Live, sleep, eat and breathe Keynote decks? Yep. Anything to help that idea fly.
 

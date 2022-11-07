@@ -10,7 +10,6 @@ import Link from 'next/link';
 <Link href="/posts">← Back to projects</Link>
 
 <VideoPlayer
-	gifv="true"
 	poster="/videos/backmarket-schnitzel_poster.gif"
 	mp4="/videos/backmarket-schnitzel.mp4"
 	webm="/videos/backmarket-schnitzel.webm"
@@ -21,14 +20,12 @@ Back Market is France’s latest unicorn – the mother of all marketplaces for 
 ### Some other films from the campaign
 
 <VideoPlayer
-	gifv="true"
 	poster="/videos/backmarket-explode_poster.gif"
 	mp4="/videos/backmarket-explode.mp4"
 	webm="/videos/backmarket-explode.webm"
 />
 
 <VideoPlayer
-	gifv="true"
 	poster="/videos/backmarket-tree_poster.gif"
 	mp4="/videos/backmarket-tree.mp4"
 	webm="/videos/backmarket-tree.webm"

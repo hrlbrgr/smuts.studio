@@ -34,7 +34,7 @@ export default {
   },
   footer: (
     <div>
-      <hr />
+     <small style={{ display: "block", marginTop: "8rem" }}>
         smuts AB
       {" "}
       ·{" "}
@@ -48,14 +48,6 @@ export default {
       <a href="mailto:hej@smuts.studio" target="_blank">
         hej@smuts.studio
       </a>
-      <small style={{ display: "block", marginTop: "8rem" }}>
-        <abbr
-          title="This site and all its content are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
-          style={{ cursor: "help" }}
-        >
-          CC BY-NC 4.0
-        </abbr>{" "}
-        <time>{YEAR}</time> © smuts AB
       </small>
     </div>
   ),

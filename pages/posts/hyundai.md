@@ -4,9 +4,16 @@ date: 2022/04/22
 description: Using the power of football for sustainability.
 ---
 
+import VideoPlayer from '../../lib/video';
 import Link from 'next/link';
 
 <Link href="/posts">← Back to projects</Link>
+
+<VideoPlayer
+	poster="/videos/gotc_poster.gif"
+	mp4="/videos/gotc.mp4"
+	webm="/videos/gotc.webm"
+/>
 
 A sustainability campaign announcing carbon neutrality goals by ~~2025~~ ~~2030~~ ~~2035~~ ~~2040~~ 2045. 
 
@@ -30,9 +37,18 @@ As is so often the case in projects of this scale, most of the work we developed
 
 ### A ~~straightforward~~ key visual
 
+<VideoPlayer
+	gifv="true"
+	poster="/videos/gotc-keyvisual_poster.gif"
+	mp4="/videos/gotc-keyvisual.mp4"
+	webm="/videos/gotc-keyvisual.webm"
+/>
+
 What was meant to be a shoot in Lofoten, Norway on one of [the world's most interesting football pitches](https://www.google.com/search?q=henningsvær+stadion&client=safari&rls=en&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiI3-6LmsP3AhUtQ_EDHfGBCe4Q_AUoAnoECAEQBA) turned into a post-production challenge when the shoot was scrapped and we were tasked with recreating the location using stock imagery only instead. We gave it our best shot and are pretty pleased with the result.
 
 ### A ~~charismatic~~ team captain
+
+![](../../public/images/gotc-gerrard-1.jpg)
 
 Team Century is the name of the brand ambassador collective we gathered to bring the campaign to life. And like every team, this one needs a captain. ~~Zinédine Zidane~~ ~~Thierry Henry~~ Steven Gerrard was our ~~first~~ ~~second~~ third choice due to his ~~swagger~~ ~~humour~~ availability.
 
@@ -40,13 +56,34 @@ Don't get us wrong: Stevie G. is an absolute football legend! Just maybe not the
 
 ### A ~~simple~~ logo
 
+<VideoPlayer
+	gifv="true"
+	poster="/videos/gotc-logo_poster.gif"
+	mp4="/videos/gotc-logo.mp4"
+	webm="/videos/gotc-logo.webm"
+/>
+
 What was meant to be a nice and clean, simple logo in three alignment variants quickly ballooned into a total of 128 (!) different logo files as we were asked to accommodate more and more client requests. The process might not have been perfect but we still gave it our all and applied the same rigorously precise design system to each and every logo variant and generated a comprehensive database with accompanying guideline.
 
 ### At least the layouts look good and make sense
 
 We developed a grid-based design system to serve as the framework underlying each and every asset created as part of the campaign. It's rigorous enough to tie the look and feel together across a range of media. And relaxed enough to allow layouts that stay interesting and never look the same.
 
+<VideoPlayer
+	gifv="true"
+	poster="/videos/gotc-instagram_poster.gif"
+	mp4="/videos/gotc-instagram.mp4"
+	webm="/videos/gotc-instagram.webm"
+/>
+
 No matter if designing digital assets or editorial applications for print – our type-heavy look is flexible and always fun to work with.
+
+<VideoPlayer
+	gifv="true"
+	poster="/videos/gotc-editorial_poster.gif"
+	mp4="/videos/gotc-editorial.mp4"
+	webm="/videos/gotc-editorial.webm"
+/>
 
 ### Are we happy with the result?
 
