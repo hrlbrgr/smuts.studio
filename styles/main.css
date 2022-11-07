@@ -103,7 +103,7 @@ h1 {
 .prose {
   line-height: 1.6;
   word-spacing: -0.04em;
-  max-width: 40rem;
+  max-width: 35rem;
 }
 
 .post-item-more {
@@ -166,6 +166,10 @@ details summary {
   cursor: pointer;
 }
 
+video {
+  width: 100%;
+}
+
 img.next-image {
   margin: 0;
 }
@@ -224,29 +228,6 @@ article.prose pre code {
   --shiki-token-punctuation: #bbb;
   --shiki-token-link: #ffab70;
   --card-bg: #212424;
-}
-
-a.insite-card {
-  padding: 0.8rem 1rem;
-  border-radius: 0.5rem;
-  background-color: var(--card-bg);
-  flex: 0 0 calc(50% - 0.5rem);
-  text-decoration: none;
-}
-
-a.insite-card h3 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-a.insite-card p {
-  margin: 0.25rem 0 0;
-}
-
-@media screen and (max-width: 480px) {
-  a.insite-card {
-    flex: 1 0 100%;
-  }
 }
 
 figure,

@@ -3,18 +3,13 @@ import Script from "next/script"
 
 import "nextra-theme-blog/style.css"
 import "../styles/main.css"
+import "../styles/1ad9c07e-908d-4ede-8b95-c753dc644a5f.css"
 
 export default function Nextra({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
   return (
     <>
       <Head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="RSS"
-          href="/feed.xml"
-        />
         <link
           rel="preload"
           href="/fonts/InterDisplay-roman.var.woff2"
@@ -24,20 +19,6 @@ export default function Nextra({ Component, pageProps }) {
         />
       </Head>
       {getLayout(<Component {...pageProps} />)}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=UA-55182697-1"
-        async
-      />
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `
-      window.dataLayer=window.dataLayer||[]
-      function gtag(){dataLayer.push(arguments)}
-      gtag('js',new Date)
-      gtag('config','UA-55182697-1')
-    `,
-        }}
-      />
     </>
   )
 }

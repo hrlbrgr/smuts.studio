@@ -1,3 +1,4 @@
+import PostIndex from './lib/postindex';
 const YEAR = new Date().getFullYear()
 
 export default {
@@ -34,20 +35,18 @@ export default {
   footer: (
     <div>
       <hr />
-      <a href="https://twitter.com/shuding_" target="_blank">
-        Twitter
+        smuts AB
+      {" "}
+      ·{" "}
+        Org. No. 559283-3189
+      {" "}
+      ·{" "}
+      <a href="tel:+46738244203" target="_blank">
+        +46 73 824 42 03
       </a>{" "}
       ·{" "}
-      <a href="https://github.com/shuding" target="_blank">
-        GitHub
-      </a>{" "}
-      ·{" "}
-      <a href="https://instagram.com/_shuding" target="_blank">
-        Instagram
-      </a>{" "}
-      ·{" "}
-      <a href="mailto:g@shud.in" target="_blank">
-        g@shud.in
+      <a href="mailto:hej@smuts.studio" target="_blank">
+        hej@smuts.studio
       </a>
       <small style={{ display: "block", marginTop: "8rem" }}>
         <abbr
@@ -56,14 +55,10 @@ export default {
         >
           CC BY-NC 4.0
         </abbr>{" "}
-        <time>{YEAR}</time> © Shu Ding.
-        <a href="/feed.xml">RSS</a>
-        <style jsx>{`
-          a {
-            float: right;
-          }
-        `}</style>
+        <time>{YEAR}</time> © smuts AB
       </small>
     </div>
   ),
+  readMore: 'Read More →',
+  titleSuffix: null,
 }

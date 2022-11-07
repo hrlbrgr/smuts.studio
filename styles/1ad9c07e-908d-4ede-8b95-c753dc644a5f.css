@@ -1,0 +1,48 @@
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("https://cdn.fonts.net/t/1.css?apiType=css&projectid=1ad9c07e-908d-4ede-8b95-c753dc644a5f");
+  
+@font-face {
+  font-family: "NeueHaasGroteskText55Roman";
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('/fonts/NeueHaasGroteskText/NeueHaasGroteskText55Roman_normal_normal_subset1.woff2') format('woff2'), url('/fonts/NeueHaasGroteskText/NeueHaasGroteskText55Roman_normal_normal_subset1.woff') format('woff');
+  unicode-range: 'U+0020-0024','U+0026-003b','U+003d','U+003f-005b','U+005d-005e','U+0060-007a','U+007e','U+00a5','U+00a7','U+00ab','U+00b4','U+00b7','U+00bb','U+00c0-00cf','U+00d1-00d4','U+00d6','U+00d8-00dc','U+00e0-00ef','U+00f1-00f4','U+00f6','U+00f8-00fc','U+00ff-0103','U+0112-0115','U+012a-012d','U+014c-014f','U+0152-0153','U+016a-016d','U+0178','U+1e9e','U+2010-2011','U+2013-2014','U+2018-201a','U+201c-201e','U+2020-2021','U+2026','U+2032-2033','U+2039-203a';
+}
+@font-face {
+  font-family: "NeueHaasGroteskDisplay66MediumItalic";
+  font-style: italic;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay66MediumItalic_italic_normal.woff2') format('woff2'), url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay66MediumItalic_italic_normal.woff') format('woff');
+}
+@font-face {
+  font-family: "NeueHaasGroteskDisplay65Medium";
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay65Medium_normal_normal.woff2') format('woff2'), url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay65Medium_normal_normal.woff') format('woff');
+}
+@font-face {
+  font-family: "NeueHaasGroteskDisplay55Roman";
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay55Roman_normal_normal.woff2') format('woff2'), url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay55Roman_normal_normal.woff') format('woff');
+}
+@font-face {
+  font-family: "NeueHaasGroteskDisplay45Light";
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay45Light_normal_normal.woff2') format('woff2'), url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay45Light_normal_normal.woff') format('woff');
+}
+@font-face {
+  font-family: "NeueHaasGroteskDisplay76BoldItalic";
+  font-style: italic;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay76BoldItalic_italic_normal.woff2') format('woff2'), url('/fonts/NeueHaasGroteskDisplay/NeueHaasGroteskDisplay76BoldItalic_italic_normal.woff') format('woff');
+}
