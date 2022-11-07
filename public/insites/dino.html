@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>about:blank</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        overflow: hidden;
+        margin: 0;
+      }
+      #joystick {
+        position: absolute;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        appearance: none;
+        outline: none;
+        border: none;
+        z-index: 1;
+      }
+      #joystick:focus {
+        pointer-events: all;
+        cursor: pointer;
+      }
+      #restart {
+        display: flex;
+        place-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        background-image: url(/1-sprite.png);
+        background-size: 1223px 65px;
+        background-position: 0 0;
+        z-index: 1;
+      }
+      #restart svg {
+        opacity: 0;
+        animation: flickering 0.8s ease alternate infinite;
+      }
+      #joystick:focus ~ #canvas #restart {
+        display: none;
+      }
+      #joystick:focus ~ #canvas #gameover {
+        display: none;
+      }
+      #joystick {
+        animation: die 3s linear 0.2s infinite, keep-alive 0.4s;
+      }
+      #joystick:checked {
+        animation: die 3s linear 0.2s infinite, keep-alive-alt 0.4s;
+      }
+      #gameover {
+        position: absolute;
+        width: 191px;
+        height: 12px;
+        left: 0;
+        right: 0;
+        top: 50px;
+        margin: auto;
+        background-image: url(/insites/dino-sprite.png);
+        background-size: 1223px 65px;
+        background-position: -1870px -14px;
+        z-index: 2;
+      }
+      #dino {
+        position: absolute;
+        width: 44px;
+        height: 50px;
+        left: 27px;
+        bottom: 20px;
+        background-image: url(/insites/dino-sprite.png);
+        background-size: 1223px 65px;
+        background-position: -1015px 0;
+        z-index: 1;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+      }
+      #joystick:focus ~ #canvas #dino {
+        animation: dino-jumping 0.4s linear running,
+          dino-running 0.2s step-start 0.2s infinite running;
+      }
+      #joystick:focus:checked ~ #canvas #dino {
+        animation: dino-jumping-alt 0.4s linear running,
+          dino-running 0.2s step-start 0.2s infinite running;
+      }
+      #cactus1 {
+        position: absolute;
+        width: 53px;
+        height: 50px;
+        left: -53px;
+        bottom: 22px;
+        background-image: url(/insites/dino-sprite.png);
+        background-size: 1223px 65px;
+        background-position: 799px 0;
+        animation: cactus1-running 3s linear 0.31s infinite;
+      }
+      #cactus2 {
+        position: absolute;
+        width: 17px;
+        height: 36px;
+        left: -17px;
+        bottom: 22px;
+        background-image: url(/insites/dino-sprite.png);
+        background-size: 1223px 65px;
+        background-position: 966px 0;
+        animation: cactus2-running 3s linear -0.95s infinite;
+      }
+      .cloud {
+        position: absolute;
+        width: 49px;
+        height: 16px;
+        left: -50px;
+        top: 60px;
+        background-image: url(/insites/dino-sprite.png);
+        background-size: 1223px 65px;
+        background-position: 1141px 0;
+        animation: cloud-running 12s linear -4s infinite;
+      }
+      #cloud2 {
+        top: 90px;
+        animation-delay: 2s;
+      }
+      #background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+      }
+      #land {
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        left: 0;
+        bottom: 20px;
+        background-image: url(/insites/dino-sprite.png),
+          url(/insites/dino-sprite.png);
+        background-size: 1223px 65px, 1223px 65px;
+        background-repeat: no-repeat, no-repeat;
+        background-position: 0px -50px, 1202px -50px;
+        animation: land-running 3s linear infinite;
+        transform: translate3d(0, 0, 0);
+      }
+      #joystick ~ #canvas #cactus1,
+      #joystick ~ #canvas #cactus2,
+      #joystick ~ #canvas .cloud,
+      #joystick ~ #canvas #land {
+        animation-play-state: paused;
+      }
+      #joystick:focus ~ #canvas #cactus1,
+      #joystick:focus ~ #canvas #cactus2,
+      #joystick:focus ~ #canvas .cloud,
+      #joystick:focus ~ #canvas #land {
+        animation-play-state: running;
+      }
+      #canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 670px;
+        height: 200px;
+        overflow: hidden;
+      }
+      @keyframes die {
+        53% {
+          visibility: visible;
+        }
+        54% {
+          visibility: hidden;
+        }
+        59% {
+          visibility: hidden;
+        }
+        60% {
+          visibility: visible;
+        }
+        92% {
+          visibility: visible;
+        }
+        93% {
+          visibility: hidden;
+        }
+        99% {
+          visibility: hidden;
+        }
+        100% {
+          visibility: visible;
+        }
+      }
+      @keyframes keep-alive {
+        0% {
+          visibility: visible;
+        }
+        100% {
+          visibility: visible;
+        }
+      }
+      @keyframes keep-alive-alt {
+        0% {
+          visibility: visible;
+        }
+        100% {
+          visibility: visible;
+        }
+      }
+      @keyframes dino-running {
+        0% {
+          background-position: -927px 0;
+        }
+        50% {
+          background-position: -971px 0;
+        }
+        100% {
+          background-position: -927px 0;
+        }
+      }
+      @keyframes dino-jumping {
+        /** 
+         * A nice simulation of parabolic timing function using cubic-bezier:
+         * https://stackoverflow.com/a/16883488
+         */
+        0% {
+          transform: translate3d(0, 0, 0);
+          animation-timing-function: cubic-bezier(0.33333, 0.66667, 0.66667, 1);
+        }
+        69.0983% {
+          transform: translate3d(0, -80px, 0);
+          animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes dino-jumping-alt {
+        0% {
+          transform: translate3d(0, 0, 0);
+          animation-timing-function: cubic-bezier(0.33333, 0.66667, 0.66667, 1);
+        }
+        69.0983% {
+          transform: translate3d(0, -80px, 0);
+          animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes cactus1-running {
+        0% {
+          transform: translate3d(1202px, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes cactus2-running {
+        0% {
+          transform: translate3d(1202px, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes land-running {
+        0% {
+          background-position: 0px -50px, 1202px -50px;
+        }
+        100% {
+          background-position: -1202px -50px, 0 -50px;
+        }
+      }
+      @keyframes cloud-running {
+        0% {
+          transform: translate3d(1202px, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes flickering {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0.5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <input id="joystick" type="checkbox" autofocus />
+    <div id="canvas">
+      <div id="gameover"></div>
+      <a id="restart" href="/insites/dino.html">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 32 32"
+          xml:space="preserve"
+          width="80"
+        >
+          <defs><path id="a" d="M0 0h32v32H0z" /></defs>
+          <clipPath id="b"><use xlink:href="#a" overflow="visible" /></clipPath>
+          <path
+            clip-path="url(#b)"
+            fill="#FFF"
+            d="m11.3 20.4-1.2-2-1.5-1.9c-.2-.4-.2-.6-.1-1 .1-.6.7-1.1 1.4-1.1.5 0 1 .4 1.4.7l.7.8.4.5c.2.3.3.5.2.1l-.4-2.1-.3-1.1-.3-1.3-.3-1.5c-.1-.5-.1-1.4.3-1.8.3-.3.9-.4 1.3-.2.5.3.8 1 .9 1.3l.5 2 .5 2.8v-1.5c.1-.3.3-.7.7-.8l.9-.1.8.5c.4.6.4 1.9.4 1.8.1-.4.1-1.2.3-1.6.1-.2.5-.4.7-.5h1c.2 0 .6.3.7.5.2.3.3 1.3.4 1.7l.3-.7c.4-.6 1.8-.8 1.9.6v2.3l-.2 1.7a6 6 0 0 1-.7 1.4s-1.1 1.2-1.2 1.8l-.1 1 .1.9h-1.2c-.4-.1-.9-.8-1-1.1-.2-.3-.5-.3-.7 0-.2.4-.7 1.1-1.1 1.1h-3.1s.2-1-.2-1.4l-1.1-1.1-1.1-.7z"
+          />
+          <path
+            clip-path="url(#b)"
+            fill="none"
+            stroke="#000"
+            stroke-width=".8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m11.3 20.4-1.2-2-1.5-1.9c-.2-.4-.2-.6-.1-1 .1-.6.7-1.1 1.4-1.1.5 0 1 .4 1.4.7l.7.8.4.5c.2.3.3.5.2.1l-.4-2.1-.3-1.1-.3-1.3-.3-1.5c-.1-.5-.1-1.4.3-1.8.3-.3.9-.4 1.3-.2.5.3.8 1 .9 1.3l.5 2 .5 2.8v-1.5c.1-.3.3-.7.7-.8l.9-.1.8.5c.4.6.4 1.9.4 1.8.1-.4.1-1.2.3-1.6.1-.2.5-.4.7-.5h1c.2 0 .6.3.7.5.2.3.3 1.3.4 1.7l.3-.7c.4-.6 1.8-.8 1.9.6v2.3l-.2 1.7a6 6 0 0 1-.7 1.4s-1.1 1.2-1.2 1.8l-.1 1 .1.9h-1.2c-.4-.1-.9-.8-1-1.1-.2-.3-.5-.3-.7 0-.2.4-.7 1.1-1.1 1.1h-3.1s.2-1-.2-1.4l-1.1-1.1-1.1-.7z"
+          />
+          <path
+            clip-path="url(#b)"
+            fill="none"
+            stroke="#000"
+            stroke-width=".8"
+            stroke-linecap="round"
+            d="M19.6 20.7v-3.4M17.6 20.7l-.1-3.4M15.6 17.3v3.4"
+          />
+        </svg>
+      </a>
+      <div id="dino"></div>
+      <div id="background">
+        <div id="land"></div>
+        <div id="cactus1"></div>
+        <div id="cactus2"></div>
+        <div id="cloud1" class="cloud"></div>
+        <div id="cloud2" class="cloud"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+---
+title: From Shader to Metaball, Part ⅠⅠ
+date: 2022/05/08
+author: Shu
+description: Let’s talk about shaders this time.
+---
+
+import Head from "next/head"
+
+<Head>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:image"
+    content="https://shud.in/images/card-metaballs1.png"
+  />
+  <meta name="og:title" content="From Shader to Metaball, Part ⅠⅠ" />
+  <meta name="og:image" content="https://shud.in/images/card-metaballs1.png" />
+</Head>
+
+# From Shader to Metaball, Part ⅠⅠ
+
+In [Part Ⅰ](/posts/metaballs-1), we talked about shaders and the idea of SDF. In this part, we’ll walk through the basics of **2D metaballs** with some interactive examples.
+
+import { useRef, useEffect, useState } from 'react'
+
+export function Playground({ code }) {
+  const [err, setErr] = useState(null)
+  const [fn, setFn] = useState(() => x => x)
+  const [fnBody, setFnBody] = useState(code)
+  const ref = useRef()
+  useEffect(() => {
+    const context = ref.current.getContext('2d')
+    for (let i = 0; i < 100; i++) {
+      for (let j = 0; j < 100; j++) {
+        const x = i / 100
+        const y = j / 100
+        const brightness = fn(x, y)
+        context.fillStyle = `hsl(0,0%,${brightness * 100}%)`
+        context.fillRect(i, j, 1, 1)
+      }
+    }
+  }, [fn])
+  useEffect(() => {
+    try {
+      const fn = new Function('x', 'y', fnBody)
+      fn(0, 0)
+      setFn(() => fn)
+      setErr(null)
+    } catch (e) {
+      setErr(e.message.split('\n')[0])
+    }
+  }, [fnBody])
+  return (
+    <div>
+      <canvas ref={ref} width={100} height={100} style={{
+        maxWidth: '100%',
+        width: 400,
+        margin: 'auto',
+        imageRendering: 'pixelated'
+      }}/>
+      <pre>
+        <code style={{ fontSize: 16 }}>
+          {'function shader (x, y) {\n'}
+            <textarea value={fnBody} onChange={e => setFnBody(e.target.value)} style={{
+              border: '1px solid #0000001a',
+              borderRadius: 4,
+              outline: 'none',
+              width: '100%',
+              margin: '4px -3px',
+              padding: '2px'
+            }}/>
+          {'\n}'}
+        </code>
+      </pre>
+      {err}
+    </div>
+  )
+}
+
+<Playground code='  return x * x + y * y'/>
+
+In the shader above, the value will be smaller when the pixel is nearer from the top-left corner, and larger when it's far away from it. This renders a radial gradient.
+
+To make it a percise disk, you can make the value to be only 0 or 1.
+
+<Playground code='  return x * x + y * y < 0.1 ? 0 : 1'/>
+
+And to move it to a certian position by:
+
+<Playground code='  return (x - 0.5) * (x - 0.5) + (y - 0.5) * (y - 0.5) < 0.1 ? 0 : 1'/>
+
+## Mutiple disks
+
+<Playground code={`const dis1 = (x - 0.3) * (x - 0.3) + (y - 0.3) * (y - 0.3)\n
+const dis2 = (x - 0.7) * (x - 0.7) + (y - 0.7) * (y - 0.7)\n
+return dis1 < 0.09 || dis2 < 0.09 ? 0 : 1`}/>
+
+## Meta-disk
+
+The idea behind metaball is very simple: adding the distances together.
+
+<Playground code={`const dis1 = (x - 0.3) * (x - 0.3) + (y - 0.3) * (y - 0.3)\n
+const dis2 = (x - 0.7) * (x - 0.7) + (y - 0.7) * (y - 0.7)\n
+return dis1 + dis2`}/>

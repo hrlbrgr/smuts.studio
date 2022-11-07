@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-Only Magnifier</title>
+    <style>
+      @import url("https://rsms.me/inter/inter.css");
+      html {
+        font-family: "Inter", sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        letter-spacing: -0.02em;
+        background: #d8f2ff;
+        font-weight: 600;
+      }
+      @supports (font-variation-settings: normal) {
+        html {
+          font-family: "Inter var", sans-serif;
+        }
+      }
+
+      ul,
+      ol {
+        padding: 0 1.5rem;
+        line-height: 1;
+        margin: 0;
+      }
+
+      img {
+        float: right;
+        width: 250px;
+        margin-left: 20px;
+      }
+
+      li {
+        line-height: 1.5;
+      }
+
+      svg {
+        display: none;
+      }
+
+      body {
+        height: 100%;
+        width: 500px;
+        padding: 20px 60px;
+      }
+
+      #filter {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        backdrop-filter: url(#f) blur(0.3px);
+        -webkit-backdrop-filter: url(#f) blur(0.3px);
+        filter: blur(0);
+        border: 2px solid white;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25),
+          0 -10px 25px inset rgba(0, 0, 0, 0.15);
+        right: 0;
+        bottom: 0;
+        user-select: none;
+        pointer-events: none;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      #container {
+        position: fixed;
+      }
+
+      .resizable {
+        overflow: scroll;
+        resize: both;
+        top: 0;
+        width: 250px;
+        height: 100px;
+        min-width: 50px;
+        min-height: 50px;
+        opacity: 0;
+        caret-color: red;
+        transform: scale(6.5);
+        transform-origin: right bottom;
+      }
+
+      .resizable:active + #filter {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25),
+          0 -10px 25px inset rgba(0, 0, 0, 0.15);
+        transform: scale(1.1) translateY(-10px);
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <filter id="f" color-interpolation-filters="sRGB">
+          <feImage
+            xlink:href="data:image/svg+xml,%3Csvg width='128' height='128' viewBox='0 0 128 128' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_728_2)'%3E%3Crect width='128' height='128' fill='black'/%3E%3Cg style='mix-blend-mode:screen'%3E%3Crect width='128' height='128' fill='url(%23paint0_linear_728_2)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:screen'%3E%3Crect width='128' height='128' fill='url(%23paint1_linear_728_2)'/%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_728_2' x1='0' y1='0' x2='128' y2='0' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23FF0000'/%3E%3Cstop offset='1' stop-color='%23FF0000' stop-opacity='0'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear_728_2' x1='0' y1='0' x2='0' y2='128' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%230000FF'/%3E%3Cstop offset='1' stop-color='%230000FF' stop-opacity='0'/%3E%3C/linearGradient%3E%3CclipPath id='clip0_728_2'%3E%3Crect width='128' height='128' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A"
+            result="i"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="i"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="40"
+          />
+        </filter>
+      </defs>
+    </svg>
+
+    <div id="container">
+      <div draggable="true" class="resizable"></div>
+      <div id="filter"></div>
+    </div>
+
+    <h1>Faith knife-work other injury wasteland wife exile Rosie.</h1>
+
+    <img src="https://placekitten.com/408/287" />
+
+    <p>
+      Crossing birthright facing brothers lingered eleventh-one well-wishers
+      Sauron the White thief. Caverns Freda put hardly hammer dressed. I will
+      take the Ring to Mordor.
+    </p>
+    <h2>Elected going nighttime rise couple bestow smallest Gondor?</h2>
+    <p>
+      I was there the day the strength of Men failed. Into split Minas Morgul
+      cabbages. Log lamb middle Goblin-men impossible disappear grace
+      encountered riding canal brave. Been abandon forgave pickle conjure
+      harpoon his there'll you'll need gangrel Angmar.
+    </p>
+    <h3>Whatever shows nature Longshanks lone-lands what's.</h3>
+    <p>
+      Everybody damp Kingsfoil apocalypse sapphire freed pigheaded if. Homage
+      nous Orthanc searching loyal search tale. It's some form of Elvish. I
+      can't read it. Salted villages Wraith.
+    </p>
+    <ul>
+      <li>J.R.R. Tolkien?</li>
+
+      <li>Trolls.</li>
+
+      <li>Thranduil.</li>
+
+      <li>Halflings.</li>
+
+      <li>Angmar.</li>
+    </ul>
+    <ul>
+      <li>Kin sharp Brandybuck height battered stammer agreeable.</li>
+
+      <li>One oaken got cut safer Ingrates plains tool prince had.</li>
+
+      <li>Massacre Gundabad rout wisp shut earned foothold.</li>
+
+      <li>Seeps squawk hunters Giants key search rule 10000 bowmen.</li>
+
+      <li>
+        Athelas bedding rising brother her wasted kingsfoil crochet passion
+        sword-day!
+      </li>
+    </ul>
+    <h3>Alarm authority wipe bad pierced possess invite Hobbit.</h3>
+    <p>
+      Last laid ntil plate Éomer gracious wisp. I bid you all a very fond
+      farewell. Landlord obstinate Andûril that'll mindless ignorance.
+    </p>
+    <ol>
+      <li>Concerning Hobbits.</li>
+
+      <li>Balrog.</li>
+
+      <li>Air.</li>
+
+      <li>Legolas!</li>
+
+      <li>Worrywort.</li>
+    </ol>
+    <ol>
+      <li>
+        Collared Stone-Giants noticed suspect beer worse serpents trade gates.
+      </li>
+
+      <li>Guide answerable deserted Farthings recover seemed.</li>
+
+      <li>Woe Celeborn challenge achieving greatly ntil grumbling!</li>
+
+      <li>Rise storm em Istari boots.</li>
+
+      <li>Fundin troublemakers nerve brook whose summoned holding!</li>
+    </ol>
+    <h3>Shelob's exaggerate wounds claim maggoty corset hidden.</h3>
+    <p>
+      Repel dwarf sires answered bargain dropping armies leathery province
+      mischief Dwarf-lords. Westfarthing bury stuff towers accursed. I have no
+      memory of this place.
+    </p>
+    <h4>Map irons other's a Rauros houses 3000.</h4>
+    <p>
+      You shall be the Fellowship of the Ring. Explain consistency unnoticed
+      hunt faces Dúnedain stars abroad day. Lessened nest Bag-end squash
+      sorceress withered! Ought blow king's Narsil!
+    </p>
+    <blockquote>
+      <p>Today is my 111th birthday!</p>
+
+      <footer>
+        —Dimholt, <cite>speed mend stinky driven pretending</cite>
+      </footer>
+    </blockquote>
+    <h5>Racks tinkers Éothain needed southern rashly.</h5>
+    <p>
+      Hoard son's people swearing poisoning tricksed tied legend Andûril?
+      Necessary kingdom Arod overfond unbefitting darkness 111th involved. What
+      about second breakfast?
+    </p>
+    <pre>
+Jacksie sung malt loose Crebain? Dawn Middle-earth long-term crossed! Cutting Lembas nerve escape ripe. Third pauses Farthing you'll?</pre
+    >
+    <h6>Pulled Bombur's should've rooms picking keeper mine's.</h6>
+    <p>
+      <abbr>Infectious</abbr> Entmoot music midday menu? Golden she's usually
+      unhappy sweet <q>Greybeard Goblin-men</q>.
+      <samp>Throttle promises impatient deliver</samp> scent Cirith like inn.
+      From <strong>cloaks bank woodland daggers shiny</strong> Beren die solid!
+      Hands courage Gríma <dfn>lord far</dfn> corpses. Flowers Sauron call split
+      <em>week giving finish he'd</em>. Creatures Gondor's
+      <del>kingly following</del> worst henceforth. Culvert pocketses
+      <a>Pelennor Ravenhill Barad-dur</a> doorway. <time>Exile</time> demon
+      kicking consumption Dwalin. Lower dry wax pretty
+      <code>first keep</code> known. Eorlingas popularity
+      <sup>fighters</sup> band. Ran first <kbd>B</kbd> miserable lives. Dain
+      calamity usual <sub>yammer</sub>. Keyhole unpredictable gates
+      <small>set treasure forest burglar</small> Wraiths chips. Barley Isen
+      behind <cite>kicking pleasure trousers</cite>. He'd flaming
+      <ins>exactly weapons</ins> Iáve lsildur's.
+      <mark>Oil front carrying</mark> ally Rosie earthquake. Failing
+      <var>said</var> forfeit Azog starters.
+    </p>
+    <hr />
+    <dl>
+      <dt>Challenge</dt>
+
+      <dd>
+        Victorious castle ruins sweet-taking invitations change fails petty
+        admirable Orthanc.
+      </dd>
+
+      <dt>Moaning</dt>
+
+      <dd>Spot fooled committees forward legends land tree-herder Erebor.</dd>
+
+      <dd>
+        Infected scarce Frodo Baggins ill cracking scale strength's tie astride
+        disturb.
+      </dd>
+
+      <dt>Slaying</dt>
+
+      <dd>Lake-men girl veiling glows pocketses everywhere brats long-term.</dd>
+
+      <dd>Surrender serve Bofur sprinkle box sky hallway advance.</dd>
+
+      <dd>Fortunate furnaces thirst kill lesser throne Angmar bid doorway.</dd>
+    </dl>
+    <form>
+      <fieldset>
+        <legend>Rats lost</legend>
+
+        <div><label>Text</label> <input type="text" /></div>
+
+        <div><label>Email</label> <input type="email" /></div>
+
+        <div><label>Password</label> <input type="password" /></div>
+
+        <div><label>Url</label> <input type="url" /></div>
+
+        <div><label>Number</label> <input type="number" /></div>
+
+        <div><label>Tel</label> <input type="tel" /></div>
+
+        <div><label>Search</label> <input type="search" /></div>
+
+        <div><label>Time</label> <input type="time" /></div>
+
+        <div><label>Date</label> <input type="date" /></div>
+
+        <div><label>Datetime-local</label> <input type="datetime-local" /></div>
+
+        <div><label>Week</label> <input type="week" /></div>
+
+        <div><label>Textarea</label> <textarea></textarea></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Unhappy others roof</legend>
+
+        <div><label>Month</label> <input type="month" /></div>
+
+        <div>
+          <label><input type="checkbox" name="checkbox" />fond key</label>
+        </div>
+
+        <div><label>Color</label> <input type="color" /></div>
+
+        <div><label>File</label> <input type="file" /></div>
+
+        <div><label>Hidden</label> <input type="hidden" /></div>
+
+        <div><label>Image</label> <input type="image" /></div>
+
+        <div>
+          <label>bounties wiser worms north coins</label>
+          <label><input type="radio" name="radio" />hutch ours</label>
+          <label><input type="radio" name="radio" />insist worries</label>
+          <label><input type="radio" name="radio" />burglary crowned</label>
+        </div>
+
+        <div><label>Range</label> <input type="range" /></div>
+
+        <div><input type="button" value="Button" /></div>
+
+        <div><input type="reset" value="Reset" /></div>
+
+        <div><input type="submit" value="Submit" /></div>
+        <button>know gardener</button>
+        <div>
+          <label>Select</label>
+          <select>
+            <optgroup label="midnight doilies guest">
+              <option>unite</option>
+
+              <option>quest</option>
+
+              <option>encouraging</option>
+            </optgroup>
+
+            <optgroup label="lsildur's wouldn't missed">
+              <option>pointy</option>
+
+              <option>hesitate</option>
+
+              <option>unseen</option>
+            </optgroup>
+          </select>
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>
